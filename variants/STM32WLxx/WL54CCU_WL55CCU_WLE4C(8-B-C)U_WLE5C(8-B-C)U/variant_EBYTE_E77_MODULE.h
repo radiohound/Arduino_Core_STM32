@@ -62,12 +62,12 @@
 
 // On-board LED pin number
 #ifndef LED_BUILTIN
-  #define LED_BUILTIN           PNUM_NOT_DEFINED
+  #define LED_BUILTIN           PB4  // primary LED. Also has PB3 LED available
 #endif
 
 // On-board user button
 #ifndef USER_BTN
-  #define USER_BTN              PNUM_NOT_DEFINED
+  #define USER_BTN              PA1
 #endif
 
 // SPI definitions
@@ -126,10 +126,10 @@
 
 // Alias
 #ifndef DEBUG_SUBGHZSPI_MOSI
-  #define DEBUG_SUBGHZSPI_MOSI  PA7_ALT1
+  #define DEBUG_SUBGHZSPI_MOSI  PA7_ALT1  // used in rf switching. Will need to change
 #endif
 #ifndef DEBUG_SUBGHZSPI_MISO
-  #define DEBUG_SUBGHZSPI_MISO  PA6_ALT1
+  #define DEBUG_SUBGHZSPI_MISO  PA6_ALT1   // used in switching need to change
 #endif
 #ifndef DEBUG_SUBGHZSPI_SCLK
   #define DEBUG_SUBGHZSPI_SCLK  PA5_ALT1
@@ -145,7 +145,7 @@
 
 // LoRaWAN definitions
 
-#if defined(ARDUINO_RAK3172T_MODULE)
+#if defined(ARDUINO_EBYTE_E77_MODULE)  // I believe this is the case. double check
   #define LORAWAN_BOARD_HAS_TCXO        1U
 #else
   #define LORAWAN_BOARD_HAS_TCXO        0U
@@ -153,12 +153,12 @@
 #define LORAWAN_BOARD_HAS_DCDC          1U
 #define LORAWAN_TX_CONFIG               RBI_CONF_RFO_HP
 
-#define LORAWAN_RFSWITCH_PINS           PB8, PC13
+#define LORAWAN_RFSWITCH_PINS           PA6, PA7
 #define LORAWAN_RFSWITCH_PIN_COUNT      2
 #define LORAWAN_RFSWITCH_OFF_VALUES     LOW, LOW
-#define LORAWAN_RFSWITCH_RX_VALUES      HIGH, LOW
-#define LORAWAN_RFSWITCH_RFO_LP_VALUES  LOW, HIGH
-#define LORAWAN_RFSWITCH_RFO_HP_VALUES  LOW, HIGH
+#define LORAWAN_RFSWITCH_RX_VALUES      LOW, HIGH
+#define LORAWAN_RFSWITCH_RFO_LP_VALUES  HIGH, LOW
+#define LORAWAN_RFSWITCH_RFO_HP_VALUES  HIGH, LOW
 
 /*----------------------------------------------------------------------------
  *        Arduino objects - C++ only
